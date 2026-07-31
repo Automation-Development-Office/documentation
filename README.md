@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="engineering-standards/assets/ado-logo.png" alt="Ansible Automation Development Office" width="180" />
+</p>
+
 # ADO Engineering Standards Package
 
 | Field | Value |
@@ -5,7 +9,7 @@
 | Collection | `infra.ado` |
 | Handbook repository | [Automation-Development-Office/documentation](https://github.com/Automation-Development-Office/documentation) |
 | Collection repository | [Automation-Development-Office/ado](https://github.com/Automation-Development-Office/ado) |
-| Handbook version | 1.1.1 |
+| Handbook version | 1.1.2 |
 | Style basis | [Red Hat Technical Writing Style Guide](https://stylepedia.net/) |
 | Audience | ADO engineers, contributors, and release engineers |
 
