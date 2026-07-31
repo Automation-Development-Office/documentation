@@ -9,7 +9,7 @@
 | Collection | `infra.ado` |
 | Handbook repository | [Automation-Development-Office/documentation](https://github.com/Automation-Development-Office/documentation) |
 | Collection repository | [Automation-Development-Office/ado](https://github.com/Automation-Development-Office/ado) |
-| Handbook version | 1.1.2 |
+| Handbook version | 1.1.3 |
 | Style basis | [Red Hat Technical Writing Style Guide](https://stylepedia.net/) |
 | Audience | ADO engineers, contributors, and release engineers |
 
@@ -17,14 +17,14 @@
 
 | Document | Purpose |
 |----------|---------|
-| [ADO Engineering Standards](ADO-Engineering-Standards.md) | Authoritative handbook |
-| [Pull Request Checklist](checklists/pr-checklist.md) | Checks to complete before you request review |
-| [Validation Readiness Checklist](checklists/validation-readiness.md) | Scorecard for Red Hat Validated Content readiness |
-| [Collection and Role Maturity Model](checklists/maturity-model.md) | Bronze through Platinum maturity levels |
-| [templates/](templates/) | Skeletons aligned with the `ado` collection |
-| [Gap Analysis](appendices/gap-analysis.md) | Current standards compared with recommended standards |
-| [ADO-Engineering-Standards.pdf](ADO-Engineering-Standards.pdf) | Printable PDF generated from this package |
-| [ADO-Engineering-Standards.html](ADO-Engineering-Standards.html) | HTML version of the same content |
+| [ADO Engineering Standards](engineering-standards/ADO-Engineering-Standards.md) | Authoritative handbook |
+| [Pull Request Checklist](engineering-standards/checklists/pr-checklist.md) | Checks to complete before you request review |
+| [Validation Readiness Checklist](engineering-standards/checklists/validation-readiness.md) | Scorecard for Red Hat Validated Content readiness |
+| [Collection and Role Maturity Model](engineering-standards/checklists/maturity-model.md) | Bronze through Platinum maturity levels |
+| [templates/](engineering-standards/templates/) | Skeletons aligned with the `ado` collection |
+| [Gap Analysis](engineering-standards/appendices/gap-analysis.md) | Current standards compared with recommended standards |
+| [ADO-Engineering-Standards.pdf](engineering-standards/ADO-Engineering-Standards.pdf) | Printable PDF generated from this package |
+| [ADO-Engineering-Standards.html](engineering-standards/ADO-Engineering-Standards.html) | HTML version of the same content |
 
 ## How to Use This Package
 

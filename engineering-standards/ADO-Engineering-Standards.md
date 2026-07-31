@@ -10,7 +10,7 @@
 |-------|--------|
 | Organization | Automation Development Office (ADO) |
 | Collection | `infra.ado` |
-| Handbook version | 1.1.2 |
+| Handbook version | 1.1.3 |
 | Style basis | [Red Hat Technical Writing Style Guide](https://stylepedia.net/) |
 | Audience | ADO engineers, contributors, and release engineers |
 | Handbook repository | [Automation-Development-Office/documentation](https://github.com/Automation-Development-Office/documentation) |
@@ -511,5 +511,6 @@ cd extensions && molecule test -s <scenario>
 | 1.1.0 | 2026-07-31 | Revised for Red Hat Technical Writing Style Guide |
 | 1.1.1 | 2026-07-31 | Moved handbook into Automation-Development-Office/documentation |
 | 1.1.2 | 2026-07-31 | Added Ansible Automation Development Office logo to package branding |
+| 1.1.3 | 2026-07-31 | Fixed root README links to files under engineering-standards/ |
 
 When you change engineering policy, update this handbook through a pull request in this documentation repository. Pair tooling changes in `ado` when required. Add a changelog fragment in `ado` when the process change is consumer-facing for collection users.
