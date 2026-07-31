@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><title>ADO Engineering Standards</title>
+<style>
+:root { --fg:#1a1a1a; --muted:#555; --border:#d0d0d0; --accent:#ee0000; }
+body { font-family: "Red Hat Text", "Helvetica Neue", Helvetica, Arial, sans-serif; color:var(--fg); max-width:920px; margin:0 auto; padding:24px 28px 64px; line-height:1.55; font-size:11pt; }
+h1,h2,h3,h4 { font-family: "Red Hat Display", "Helvetica Neue", Helvetica, Arial, sans-serif; page-break-after:avoid; }
+h1 { border-bottom:3px solid var(--accent); padding-bottom:.35rem; }
+h2 { margin-top:1.8rem; border-bottom:1px solid var(--border); padding-bottom:.25rem; }
+table { border-collapse:collapse; width:100%; margin:.9rem 0; font-size:.92rem; page-break-inside:avoid; }
+th,td { border:1px solid var(--border); padding:.35rem .5rem; text-align:left; vertical-align:top; }
+th { background:#f3f3f3; }
+code { font-family: "Red Hat Mono", ui-monospace, Consolas, monospace; font-size:.86em; background:#f4f4f4; padding:.1em .3em; }
+pre { background:#f6f6f6; padding:.85rem 1rem; overflow-x:auto; border:1px solid var(--border); }
+.page-break { break-before:page; page-break-before:always; }
+@media print { body { max-width:none; margin:0; padding:12mm; } a { color:inherit; text-decoration:none; } }
+</style></head><body><h1 id="ado-engineering-standards-complete-package">ADO Engineering Standards — Complete Package</h1>
+<p>Generated for sharing. Prefer the split files for day-to-day editing.
+Style basis: Red Hat Technical Writing Style Guide.
+Repository: Automation-Development-Office/documentation</p>
+<div class='page-break'></div>
+
+<h1 id="ado-engineering-standards-package">ADO Engineering Standards Package</h1>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Collection</td>
+<td><code>infra.ado</code></td>
+</tr>
+<tr>
+<td>Handbook repository</td>
+<td><a href="https://github.com/Automation-Development-Office/documentation">Automation-Development-Office/documentation</a></td>
+</tr>
+<tr>
+<td>Collection repository</td>
+<td><a href="https://github.com/Automation-Development-Office/ado">Automation-Development-Office/ado</a></td>
+</tr>
+<tr>
+<td>Handbook version</td>
+<td>1.1.1</td>
+</tr>
+<tr>
+<td>Style basis</td>
+<td><a href="https://stylepedia.net/">Red Hat Technical Writing Style Guide</a></td>
+</tr>
+<tr>
+<td>Audience</td>
+<td>ADO engineers, contributors, and release engineers</td>
+</tr>
+</tbody>
+</table>
+<h2 id="documents-in-this-package">Documents in This Package</h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="ADO-Engineering-Standards.md">ADO Engineering Standards</a></td>
+<td>Authoritative handbook</td>
+</tr>
+<tr>
+<td><a href="checklists/pr-checklist.md">Pull Request Checklist</a></td>
+<td>Checks to complete before you request review</td>
+</tr>
+<tr>
+<td><a href="checklists/validation-readiness.md">Validation Readiness Checklist</a></td>
+<td>Scorecard for Red Hat Validated Content readiness</td>
+</tr>
+<tr>
+<td><a href="checklists/maturity-model.md">Collection and Role Maturity Model</a></td>
+<td>Bronze through Platinum maturity levels</td>
+</tr>
+<tr>
+<td><a href="templates/">templates/</a></td>
+<td>Skeletons aligned with the <code>ado</code> collection</td>
+</tr>
+<tr>
+<td><a href="appendices/gap-analysis.md">Gap Analysis</a></td>
+<td>Current standards compared with recommended standards</td>
+</tr>
+<tr>
+<td><a href="ADO-Engineering-Standards.pdf">ADO-Engineering-Standards.pdf</a></td>
+<td>Printable PDF generated from this package</td>
+</tr>
+<tr>
+<td><a href="ADO-Engineering-Standards.html">ADO-Engineering-Standards.html</a></td>
+<td>HTML version of the same content</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-use-this-package">How to Use This Package</h2>
+<ol>
+<li>If you are new to ADO, read Parts I and II of the handbook, then complete the pull request checklist on a small change in the <code>ado</code> collection.</li>
+<li>If you author roles, follow the role development chapter and the <a href="https://github.com/Automation-Development-Office/ado/blob/main/docs/templates/role_readme_format_template.md">role README template</a> in the collection repository.</li>
+<li>If you release collections, follow the release engineering chapter and the <a href="https://github.com/Automation-Development-Office/ado/blob/main/.github/Developers%20_Guide.md">Developers Guide</a> for workflow steps.</li>
+<li>When you change how ADO works, update this handbook in the same documentation pull request, or open a paired pull request in <code>ado</code> for tooling changes.</li>
+</ol>
+<h2 id="requirement-words">Requirement Words</h2>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>must</strong></td>
+<td>Required</td>
+</tr>
+<tr>
+<td><strong>should</strong></td>
+<td>Strongly recommended unless you document an exception</td>
+</tr>
+<tr>
+<td><strong>can</strong> / <strong>might</strong></td>
+<td>Optional or conditional</td>
+</tr>
+</tbody>
+</table>
+<div class='page-break'></div>
+
+<h1 id="ado-engineering-standards">ADO Engineering Standards</h1>
+<p><strong>Developing Enterprise Ansible Collections</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Organization</td>
+<td>Automation Development Office (ADO)</td>
+</tr>
+<tr>
+<td>Collection</td>
+<td><code>infra.ado</code></td>
+</tr>
+<tr>
+<td>Handbook version</td>
+<td>1.1.1</td>
+</tr>
+<tr>
+<td>Style basis</td>
+<td><a href="https://stylepedia.net/">Red Hat Technical Writing Style Guide</a></td>
+</tr>
+<tr>
+<td>Audience</td>
+<td>ADO engineers, contributors, and release engineers</td>
+</tr>
+<tr>
+<td>Handbook repository</td>
+<td><a href="https://github.com/Automation-Development-Office/documentation">Automation-Development-Office/documentation</a></td>
+</tr>
+<tr>
+<td>Collection repository</td>
+<td><a href="https://github.com/Automation-Development-Office/ado">Automation-Development-Office/ado</a></td>
+</tr>
+<tr>
+<td>Related procedure guide</td>
+<td><a href="https://github.com/Automation-Development-Office/ado/blob/main/.github/Developers%20_Guide.md">Developers Guide</a></td>
+</tr>
+</tbody>
+</table>
+<p>This handbook describes how ADO develops and maintains the <code>infra.ado</code> Ansible collection. Use it with the Developers Guide in the collection repository: this handbook sets policy; the Developers Guide documents workflow mechanics.</p>
+<hr />
+<h1 id="part-i-foundations">Part I. Foundations</h1>
+<h2 id="purpose-of-this-handbook">Purpose of This Handbook</h2>
+<p>This handbook is the authoritative reference for ADO engineering practices for <code>infra.ado</code>. It is based on practices already present in the collection repository and states requirements where the project previously relied on convention alone.</p>
+<p>This handbook is not a guide for submitting content to the Red Hat Validated Content program. Validation readiness is covered in a later chapter. After you read Parts I and II, you can clone the collection repository and contribute changes that meet ADO standards.</p>
+<h2 id="about-the-automation-development-office">About the Automation Development Office</h2>
+<p>The Automation Development Office develops reusable automation for Ansible Automation Platform environments. ADO provides tested, documented collections and execution environments that support consistent automation of enterprise infrastructure, including Ansible Automation Platform, OpenShift, Red Hat Enterprise Linux, Satellite, identity services, and related tooling.</p>
+<p>The primary deliverable of the collection repository is the Ansible collection <code>infra.ado</code>.</p>
+<h2 id="requirement-words_1">Requirement Words</h2>
+<p>This handbook uses the following words in the sense defined by the Red Hat Technical Writing Style Guide:</p>
+<table>
+<thead>
+<tr>
+<th>Word</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>must</strong></td>
+<td>A requirement. You are required to do this.</td>
+</tr>
+<tr>
+<td><strong>should</strong></td>
+<td>A strong recommendation. Follow it unless you document a justified exception.</td>
+</tr>
+<tr>
+<td><strong>can</strong> / <strong>might</strong></td>
+<td>An optional or conditional action.</td>
+</tr>
+</tbody>
+</table>
+<p>Labels in this handbook:</p>
+<ul>
+<li><strong>Current standard</strong> — Behavior that the collection repository already implements or enforces.</li>
+<li><strong>Recommended standard</strong> — An ADO roadmap item that improves consistency or validation readiness but is not fully enforced yet.</li>
+</ul>
+<h2 id="guiding-principles">Guiding Principles</h2>
+<h3 id="automate-repeatable-work">Automate Repeatable Work</h3>
+<p>If you can automate a task safely and repeatedly, you should add that automation to the collection instead of relying on undocumented knowledge.</p>
+<h3 id="keep-each-role-focused">Keep Each Role Focused</h3>
+<p>Each role must have a clear scope, for example <code>ocp_namespace</code>, <code>rhel_cron</code>, or <code>aap_build_ee</code>. If a role mixes unrelated concerns, you must split it.</p>
+<h3 id="design-for-reuse">Design for Reuse</h3>
+<p>Write roles so that another team can consume them from Automation Hub or from a collection tarball without reading the implementation.</p>
+<h3 id="require-idempotence">Require Idempotence</h3>
+<p>When you run a role again with the same inputs, the end state should remain the same. Molecule verify stages should assert this where practical.</p>
+<h3 id="test-before-you-merge">Test Before You Merge</h3>
+<p>If a change alters automation behavior, it must pass the pull request gate: lint, Molecule, and changelog rules. See the testing and CI/CD chapters.</p>
+<h3 id="treat-documentation-as-deliverable-content">Treat Documentation as Deliverable Content</h3>
+<p>A feature is complete only when the role README describes how to use it, and when a changelog fragment is present if project rules require one.</p>
+<h3 id="optimize-for-the-consumer">Optimize for the Consumer</h3>
+<p>Prefer clear install paths, variable names, examples, and upgrade notes. Prefer predictable patterns over clever ones.</p>
+<h3 id="never-commit-secrets">Never Commit Secrets</h3>
+<p>You must not commit passwords, API keys, vault contents, customer data, or environment-specific secrets in issues, pull requests, or the repository. This rule is also stated in the ADO Code of Conduct addendum.</p>
+<h2 id="glossary">Glossary</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Collection</td>
+<td>Installable Ansible content unit defined by <code>galaxy.yml</code> (<code>infra.ado</code>)</td>
+</tr>
+<tr>
+<td>Role</td>
+<td>Reusable automation unit under <code>roles/</code></td>
+</tr>
+<tr>
+<td>Plugin</td>
+<td>Module, filter, lookup, or similar content under <code>plugins/</code> (not used in this collection today)</td>
+</tr>
+<tr>
+<td>Execution environment (EE)</td>
+<td>Container image that Ansible Automation Platform uses to run jobs</td>
+</tr>
+<tr>
+<td>Molecule scenario</td>
+<td>Integration test under <code>extensions/molecule/&lt;name&gt;/</code></td>
+</tr>
+<tr>
+<td>Fragment</td>
+<td>antsibull-changelog YAML file under <code>changelogs/fragments/</code></td>
+</tr>
+<tr>
+<td>Pull request gate</td>
+<td>Jobs in <code>main.yml</code> that must succeed before merge</td>
+</tr>
+<tr>
+<td>Validated Content</td>
+<td>Red Hat program that reviews collections as recommended automation patterns</td>
+</tr>
+<tr>
+<td>Published content</td>
+<td>Content that is available on Automation Hub or Galaxy without implying validation</td>
+</tr>
+<tr>
+<td>Certified content</td>
+<td>Content at a higher support and certification tier than Validated Content</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="part-ii-engineering-standards">Part II. Engineering Standards</h1>
+<h2 id="collection-architecture">Collection Architecture</h2>
+<h3 id="collection-identity">Collection Identity</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Namespace</td>
+<td><code>infra</code></td>
+</tr>
+<tr>
+<td>Name</td>
+<td><code>ado</code></td>
+</tr>
+<tr>
+<td>Version source of truth</td>
+<td><code>galaxy.yml</code> (<code>version</code>). CI can override only <code>version</code> from a Git tag at build time.</td>
+</tr>
+<tr>
+<td>License</td>
+<td>GPL-3.0-or-later</td>
+</tr>
+<tr>
+<td>Ansible requirement</td>
+<td><code>requires_ansible: "&gt;=2.16.0"</code> in <code>meta/runtime.yml</code></td>
+</tr>
+<tr>
+<td>Runtime dependencies</td>
+<td><code>dependencies: {}</code> in <code>galaxy.yml</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Current standard:</strong> Runtime collections come from the execution environment or container so that offline tarball installs do not resolve Galaxy dependencies at install time.</p>
+<h3 id="capability-areas">Capability Areas</h3>
+<p>Role name prefixes map to domains as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Domain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aap_</code>, <code>install_aap</code>, <code>bootstrap_</code></td>
+<td>Ansible Automation Platform, EE builds, bootstrap pipelines</td>
+</tr>
+<tr>
+<td><code>ocp_</code></td>
+<td>OpenShift platform and operators</td>
+</tr>
+<tr>
+<td><code>idm_</code>, <code>rhbk_</code></td>
+<td>Identity (Identity Management and Red Hat build of Keycloak)</td>
+</tr>
+<tr>
+<td><code>rhel_</code>, <code>satellite_</code></td>
+<td>Red Hat Enterprise Linux and Satellite</td>
+</tr>
+<tr>
+<td><code>grafana_</code>, <code>elastic</code>, <code>kafka_</code>, <code>gitlab_</code>, <code>jira</code></td>
+<td>Observability and DevOps tooling</td>
+</tr>
+<tr>
+<td><code>install_*</code></td>
+<td>Multi-step application installs</td>
+</tr>
+<tr>
+<td><code>vm_</code></td>
+<td>Image management</td>
+</tr>
+</tbody>
+</table>
+<h3 id="choosing-a-role-or-a-collection">Choosing a Role or a Collection</h3>
+<p>For the decision procedure, see <a href="templates/collection-decision.md">Collection Versus Role Decisions</a>.</p>
+<p><strong>Current standard:</strong> Prefer a new role in <code>infra.ado</code> for platform-adjacent automation.</p>
+<p><strong>Recommended standard:</strong> Split into another collection only when release cadence, EE contents, or Validated Content scope clearly diverge.</p>
+<h2 id="repository-layout">Repository Layout</h2>
+<p>The collection repository uses the following top-level layout:</p>
+<pre><code class="language-text">ado/
+├── galaxy.yml
+├── README.md
+├── CHANGELOG.rst
+├── meta/runtime.yml
+├── roles/
+├── extensions/molecule/
+├── extensions/eda/
+├── changelogs/fragments/
+├── collections/requirements.yml
+├── scripts/
+├── docs/
+│   └── templates/role_readme_format_template.md
+├── tests/
+└── .github/workflows/
+</code></pre>
+<p>Engineering standards for ADO live in this documentation repository under <code>engineering-standards/</code>.</p>
+<p>You must place new integration tests under <code>extensions/molecule/</code> in the collection repository. Do not rely only on <code>roles/&lt;role&gt;/molecule/</code>.</p>
+<h3 id="ai-assisted-contributions">AI-Assisted Contributions</h3>
+<p><code>AGENTS.md</code> in the collection repository requires contributors and agents to follow the ansible-creator <a href="https://raw.githubusercontent.com/ansible/ansible-creator/refs/heads/main/docs/agents.md">agents.md</a> practices. Human reviewers remain accountable for correctness, secrets handling, and changelog accuracy.</p>
+<h2 id="role-development">Role Development</h2>
+<h3 id="required-role-contents">Required Role Contents</h3>
+<p>Every role must contain the following files:</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>README.md</code></td>
+<td>Present. The README should match <code>docs/templates/role_readme_format_template.md</code>.</td>
+</tr>
+<tr>
+<td><code>tasks/</code></td>
+<td>At least <code>main.yml</code></td>
+</tr>
+<tr>
+<td><code>meta/main.yml</code></td>
+<td>Present, with ADO <code>galaxy_info</code> defaults</td>
+</tr>
+</tbody>
+</table>
+<p>Every role should contain the following files:</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>defaults/main.yml</code></td>
+<td>Role-prefixed variables</td>
+</tr>
+<tr>
+<td><code>handlers/main.yml</code></td>
+<td>Can be empty</td>
+</tr>
+<tr>
+<td><code>vars/main.yml</code></td>
+<td>Role constants</td>
+</tr>
+<tr>
+<td><code>meta/argument_specs.yml</code></td>
+<td>Recommended standard for public inputs (currently used in 5 of 90 roles)</td>
+</tr>
+</tbody>
+</table>
+<p>For a copyable skeleton, see <a href="templates/new-role.md">New Role Skeleton</a>.</p>
+<h3 id="role-metadata">Role Metadata</h3>
+<p>Use the following values in <code>meta/main.yml</code>:</p>
+<ul>
+<li><code>company: Automation Development Office</code></li>
+<li><code>license: GPL-3.0-or-later</code></li>
+<li><code>min_ansible_version: "2.16.0"</code></li>
+</ul>
+<p>YAML files should begin with the following comment:</p>
+<pre><code class="language-yaml"># SPDX-License-Identifier: GPL-3.0-or-later
+</code></pre>
+<p>You must not use the invalid SPDX identifier <code>GPL-3.0-or-later-0</code>. That incorrect form exists in parts of the tree today; see the gap analysis.</p>
+<h3 id="variable-naming">Variable Naming</h3>
+<ul>
+<li>Public variables must use the <code>&lt;role_name&gt;_</code> prefix. <code>ansible-lint</code> enforces <code>var-naming[no-role-prefix]</code> unless you add a justified <code>noqa</code>.</li>
+<li>README variable tables must match the names that <code>tasks/</code> and <code>defaults/</code> actually use.</li>
+<li><strong>Recommended standard:</strong> Declare inputs in <code>meta/argument_specs.yml</code>. Use <code>roles/aap_build_ee</code> as the reference implementation.</li>
+</ul>
+<h3 id="task-style">Task Style</h3>
+<ul>
+<li>Modules must use fully qualified collection names (FQCN), for example <code>ansible.builtin.copy</code> or <code>kubernetes.core.k8s</code>.</li>
+<li>Task <code>name</code> values should be descriptive phrases in title case.</li>
+<li>Prefer modules over <code>shell</code> or <code>command</code> unless no suitable module exists. If you use <code>shell</code> or <code>command</code>, document why and keep the task idempotent.</li>
+</ul>
+<h3 id="vendored-content">Vendored Content</h3>
+<p>You can exclude content that is vendored from upstream, for example <code>aap_ocp_install_upstream</code> from <code>infra.aap_utilities</code>, from local lint when you include an explicit comment that cites the upstream version. ADO wrapper roles should remain thin and documented.</p>
+<h2 id="documentation-standards">Documentation Standards</h2>
+<h3 id="role-readme-files">Role README Files</h3>
+<p>Role README files should follow this section order from <code>docs/templates/role_readme_format_template.md</code>:</p>
+<ol>
+<li>Title (<code># Role: infra.ado.&lt;name&gt;</code>)</li>
+<li>Role Author</li>
+<li>Role Requirements</li>
+<li>Role Variables</li>
+<li>Role Usage</li>
+<li>Role Molecule Testing</li>
+<li>Role Structure</li>
+</ol>
+<p>Validate a README with the following command:</p>
+<pre><code class="language-bash">python scripts/verify_readme.py roles/&lt;role&gt;/README.md
+</code></pre>
+<p><strong>Current standard:</strong> CI runs this check as informational (<code>continue-on-error</code>).</p>
+<p><strong>Recommended standard:</strong> Require the check on pull requests that touch role README files or add roles.</p>
+<h3 id="molecule-instructions-in-readme-files">Molecule Instructions in README Files</h3>
+<p>The Molecule section must document scenarios under <code>extensions/molecule/</code>. Example:</p>
+<pre><code class="language-bash">cd extensions
+molecule test -s integration_&lt;role&gt;
+</code></pre>
+<p>You must not instruct readers to run <code>cd roles/&lt;role&gt; &amp;&amp; molecule test</code> unless that path is intentionally maintained and discovered by CI. CI discovers scenarios only under <code>extensions/molecule/</code>.</p>
+<h3 id="collection-readme">Collection README</h3>
+<p>The root <code>README.md</code> in the collection repository must remain the entry point for collection purpose, role index, requirements, and high-level testing notes.</p>
+<h2 id="testing-standards">Testing Standards</h2>
+<h3 id="molecule">Molecule</h3>
+<ul>
+<li>Canonical scenarios live in <code>extensions/molecule/&lt;scenario&gt;/</code>.</li>
+<li>Shared helpers live in <code>extensions/molecule/utils/</code>.</li>
+<li><code>extensions/molecule/pr_exclude.txt</code> lists scenarios that pull request CI skips. You can still run those scenarios with <code>workflow_dispatch</code>. Heavy OpenShift and <code>install_*</code> scenarios are typically excluded from pull requests because of cost or secrets.</li>
+<li>Scenarios should include converge and verify stages, and destroy when needed.</li>
+</ul>
+<h3 id="ansible-lint">ansible-lint</h3>
+<p>Configuration lives in <code>.ansible-lint</code>.</p>
+<ul>
+<li><code>mock_roles</code> lists all <code>infra.ado.*</code> roles.</li>
+<li><code>mock_modules</code> documents the third-party FQCN surface.</li>
+<li>Broad <code>exclude_paths</code> settings focus lint on tasks, handlers, and templates more than on defaults and vars.</li>
+</ul>
+<p>You must fix lint failures before merge. The pull request gate requires the lint job to succeed. For internal <code>continue-on-error</code> details, see the Developers Guide.</p>
+<h3 id="ansible-test-and-tox">ansible-test and tox</h3>
+<p><code>tests/integration</code> and <code>tests/unit</code> provide ansible-test scaffolding. <code>tox-ansible.ini</code> skips obsolete Python and ansible-core lines to match the 2.16 floor.</p>
+<p><strong>Recommended standard:</strong> Add real integration targets when you add plugins. Remove stub <code>roles/*/tests/test.yml</code> files that imply coverage they do not provide, or replace them with real tests.</p>
+<h3 id="pre-commit-hooks">Pre-commit Hooks</h3>
+<p>Before you push, you should run the following command:</p>
+<pre><code class="language-bash">pre-commit run --all-files
+</code></pre>
+<p>Hooks include merge-conflict and symlink checks, trailing whitespace fixes, Prettier, isort, Black, flake8, and a block on direct commits to <code>main</code>.</p>
+<h2 id="cicd-standards">CI/CD Standards</h2>
+<h3 id="workflows">Workflows</h3>
+<table>
+<thead>
+<tr>
+<th>Workflow</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main.yml</code></td>
+<td>Primary pull request gate, build, and tag pre-release</td>
+</tr>
+<tr>
+<td><code>tests.yml</code></td>
+<td>Secondary checks in the ansible-content-actions style</td>
+</tr>
+<tr>
+<td><code>security-check.yml</code></td>
+<td>Security scripts (informational)</td>
+</tr>
+<tr>
+<td><code>release.yml</code></td>
+<td>Official GitHub Release, changelog, and tarball</td>
+</tr>
+<tr>
+<td><code>publish-galaxy.yml</code></td>
+<td>Manual Galaxy publish</td>
+</tr>
+<tr>
+<td><code>open-changelog-pr.yml</code></td>
+<td>Changelog pull request recovery</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pull-request-gate">Pull Request Gate</h3>
+<p>The following checks are required for merge on pull requests (<code>main.yml</code>):</p>
+<ol>
+<li>Ansible Lint</li>
+<li>Discover Molecule Scenarios (must find at least one scenario)</li>
+<li>Molecule matrix</li>
+<li>Changelog (unless the <code>skip-changelog</code> label is applied)</li>
+</ol>
+<p>The README format check and the security check are not required today.</p>
+<p><strong>Recommended standard:</strong> Make the README and security checks required after the false-positive rate is acceptable. Consolidate overlapping jobs between <code>main.yml</code> and <code>tests.yml</code>.</p>
+<h3 id="branch-policy">Branch Policy</h3>
+<p>You must not commit directly to <code>main</code>. The pre-commit <code>no-commit-to-branch</code> hook blocks those commits. Submit changes through pull requests.</p>
+<hr />
+<h1 id="part-iii-release-engineering">Part III. Release Engineering</h1>
+<h2 id="changelog-and-versioning">Changelog and Versioning</h2>
+<h3 id="changelog-fragments">Changelog Fragments</h3>
+<ul>
+<li>For consumer-visible changes, you must add a YAML fragment under <code>changelogs/fragments/</code>.</li>
+<li>In ordinary pull requests, you must not edit <code>CHANGELOG.rst</code> or <code>changelogs/changelog.yaml</code>.</li>
+<li>Release pull requests can update those compiled files when <code>antsibull-changelog</code> produces them.</li>
+</ul>
+<p>Trivial non-user-facing edits can be exempt. Follow the Developers Guide and the changelog rule in the collection repository.</p>
+<h3 id="semantic-versions">Semantic Versions</h3>
+<ul>
+<li>Tags should use Semantic Versioning, for example <code>1.2.0</code> or <code>v1.2.0</code>.</li>
+<li><code>scripts/validate_release_version.py</code> rejects malformed versions, for example an extra numeric segment before <code>-rc</code>.</li>
+<li>The artifact name is <code>infra-ado-&lt;version&gt;.tar.gz</code>.</li>
+</ul>
+<h3 id="release-flow">Release Flow</h3>
+<p>The current release flow is as follows:</p>
+<ol>
+<li>Merge changes to <code>main</code> through a pull request.</li>
+<li>Push a version tag.</li>
+<li>CI creates or updates a GitHub pre-release with a changelog preview.</li>
+<li>Publish an official GitHub Release.</li>
+<li><code>release.yml</code> runs <code>antsibull-changelog release</code>, attaches the collection tarball, and opens a changelog pull request to <code>main</code>.</li>
+<li>Merge the changelog pull request.</li>
+<li>Run <strong>Publish to Ansible Galaxy</strong> with <code>workflow_dispatch</code>. This step is manual and uses the <code>release</code> GitHub Environment and <code>ANSIBLE_GALAXY_API_KEY</code>.</li>
+</ol>
+<h2 id="execution-environments">Execution Environments</h2>
+<h3 id="building-execution-environments-in-the-collection">Building Execution Environments in the Collection</h3>
+<p>The <code>infra.ado.aap_build_ee</code> role does the following:</p>
+<ul>
+<li>Renders <code>execution-environment.yml</code> and requirements files from defaults and templates.</li>
+<li>Runs <code>ansible-builder</code> against a base image that you supply.</li>
+<li>Exposes typed inputs through <code>meta/argument_specs.yml</code>.</li>
+</ul>
+<p>Treat this role as the reference implementation for argument specifications.</p>
+<p>Playbook runtime collection dependencies should be satisfied by the execution environment, consistent with empty <code>dependencies</code> in <code>galaxy.yml</code>.</p>
+<h3 id="related-roles">Related Roles</h3>
+<ul>
+<li><code>aap_configuration</code> dispatches to <code>infra.aap_configuration</code>.</li>
+<li><code>aap_ocp_install</code> and the upstream vendored role install Ansible Automation Platform on OpenShift.</li>
+<li><code>install_aap</code> provides an alternate install path.</li>
+</ul>
+<p>Development containers (<code>.devcontainer</code>, <code>devfile.yaml</code>) use community Ansible development tooling images. Those images are not substitutes for customer execution environments.</p>
+<hr />
+<h1 id="part-iv-operations">Part IV. Operations</h1>
+<h2 id="security">Security</h2>
+<p>You must do the following:</p>
+<ul>
+<li>Run <code>scripts/security_checks.py</code> on touched roles before review. When relevant, also run <code>scripts/security_data_exposure_scan.py</code>.</li>
+<li>Avoid <code>shell</code> with untrusted input. Avoid copying credentials into templates that you commit.</li>
+<li>Treat CI logs as potentially sensitive. Do not echo secrets.</li>
+</ul>
+<p><strong>Current standard:</strong> The security workflow is informational.</p>
+<p><strong>Recommended standard:</strong> Block merge on high findings for role changes.</p>
+<h2 id="code-review">Code Review</h2>
+<p>Reviewers should verify the following items:</p>
+<ol>
+<li>The change matches the pull request type checklist.</li>
+<li>Variable prefixes and README content are accurate.</li>
+<li>Molecule scenarios are updated when behavior changes.</li>
+<li>A changelog fragment is present, or the skip label is justified.</li>
+<li>No secrets are included.</li>
+<li>Breaking changes are called out.</li>
+<li>For new roles, the team discussed the design, and <code>verify_readme.py</code> passed.</li>
+</ol>
+<p>Feature tasks use acceptance criteria in <code>.github/ISSUE_TEMPLATE/feature_task.yml</code>.</p>
+<h2 id="validation-readiness">Validation Readiness</h2>
+<p>The Red Hat Validated Content program evaluates a collection as a product: lint and sanity results, CI evidence, documentation completeness, design quality, security, and functional proof.</p>
+<p>Use <a href="checklists/validation-readiness.md">Validation Readiness Checklist</a> and target Platinum on the <a href="checklists/maturity-model.md">Collection and Role Maturity Model</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Question answered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Published</td>
+<td>Is the content available?</td>
+</tr>
+<tr>
+<td>Validated</td>
+<td>Does Red Hat treat the content as a recommended pattern?</td>
+</tr>
+<tr>
+<td>Certified</td>
+<td>Is the content a supported certified integration?</td>
+</tr>
+</tbody>
+</table>
+<h2 id="customer-deliverables">Customer Deliverables</h2>
+<p>A customer-facing delivery should include the following items:</p>
+<ol>
+<li>Collection tarball (<code>infra-ado-&lt;version&gt;.tar.gz</code>)</li>
+<li>Matching execution environment image, or EE build inputs</li>
+<li>Collection and role documentation</li>
+<li>Example playbooks</li>
+<li>Release notes or a changelog excerpt</li>
+<li>Support and compatibility matrix (Ansible, platforms, Ansible Automation Platform version)</li>
+</ol>
+<h2 id="reference-architecture">Reference Architecture</h2>
+<p>The following flow shows how ADO artifacts reach managed infrastructure:</p>
+<pre><code class="language-text">Developer
+    |
+    v
+GitHub (ado)
+    |
+    v
+GitHub Actions
+    |--------------|
+    v              v
+Collection      EE image
+tarball         (registry)
+    |              |
+    +------+-------+
+           v
+ Automation Hub or Galaxy
+           v
+ Ansible Automation Platform controller
+           v
+ Execution nodes (EE)
+           v
+ Managed infrastructure
+</code></pre>
+<p>When bootstrap tools or UI surfaces outside the collection repository are part of a customer delivery, link them from the customer runbook.</p>
+<h2 id="maturity-model">Maturity Model</h2>
+<p>See <a href="checklists/maturity-model.md">Collection and Role Maturity Model</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Expectation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bronze</td>
+<td>Locally functional only. Insufficient for merging new roles.</td>
+</tr>
+<tr>
+<td>Silver</td>
+<td>Default pull request merge bar.</td>
+</tr>
+<tr>
+<td>Gold</td>
+<td>Customer deliverable bar.</td>
+</tr>
+<tr>
+<td>Platinum</td>
+<td>Validated Content bar.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="appendixes">Appendixes</h1>
+<h2 id="quick-command-card">Quick Command Card</h2>
+<pre><code class="language-bash">ansible-lint
+python scripts/verify_readme.py roles/&lt;role&gt;/README.md
+python3 scripts/security_checks.py roles/&lt;role&gt;
+python3 scripts/validate_changelog.py --ref main
+pre-commit run --all-files
+cd extensions &amp;&amp; molecule test -s &lt;scenario&gt;
+</code></pre>
+<h2 id="related-documents">Related Documents</h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Developers Guide</td>
+<td><a href="https://github.com/Automation-Development-Office/ado/blob/main/.github/Developers%20_Guide.md">ado Developers Guide</a></td>
+</tr>
+<tr>
+<td>Pull request template</td>
+<td><a href="https://github.com/Automation-Development-Office/ado/blob/main/.github/pull_request_template.md">ado PR template</a></td>
+</tr>
+<tr>
+<td>Code of Conduct</td>
+<td><a href="https://github.com/Automation-Development-Office/ado/blob/main/CODE_OF_CONDUCT.md">ado CODE_OF_CONDUCT.md</a></td>
+</tr>
+<tr>
+<td>Role README template</td>
+<td><a href="https://github.com/Automation-Development-Office/ado/blob/main/docs/templates/role_readme_format_template.md">ado role README template</a></td>
+</tr>
+<tr>
+<td>Changelog rule</td>
+<td><a href="https://github.com/Automation-Development-Office/ado/blob/main/.cursor/rules/changelog-fragments.mdc">ado changelog rule</a></td>
+</tr>
+<tr>
+<td>Gap analysis</td>
+<td><a href="appendices/gap-analysis.md">appendices/gap-analysis.md</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="document-control">Document Control</h2>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0.0</td>
+<td>2026-07-31</td>
+<td>Initial handbook based on <code>infra.ado</code> repository practices</td>
+</tr>
+<tr>
+<td>1.1.0</td>
+<td>2026-07-31</td>
+<td>Revised for Red Hat Technical Writing Style Guide</td>
+</tr>
+<tr>
+<td>1.1.1</td>
+<td>2026-07-31</td>
+<td>Moved handbook into Automation-Development-Office/documentation</td>
+</tr>
+</tbody>
+</table>
+<p>When you change engineering policy, update this handbook through a pull request in this documentation repository. Pair tooling changes in <code>ado</code> when required. Add a changelog fragment in <code>ado</code> when the process change is consumer-facing for collection users.</p>
+<div class='page-break'></div>
+
+<h1 id="collection-and-role-maturity-model">Collection and Role Maturity Model</h1>
+<p>Use this scorecard when you plan role work or when you assess readiness for a customer deliverable or Validated Content submission.</p>
+<h2 id="levels">Levels</h2>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Name</th>
+<th>Intent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bronze</strong></td>
+<td>Functional</td>
+<td>Works for a known use case; basic documentation</td>
+</tr>
+<tr>
+<td><strong>Silver</strong></td>
+<td>Tested</td>
+<td>CI-covered Molecule scenario; lint clean</td>
+</tr>
+<tr>
+<td><strong>Gold</strong></td>
+<td>Release-ready</td>
+<td>Changelog, examples, EE path understood, documentation complete</td>
+</tr>
+<tr>
+<td><strong>Platinum</strong></td>
+<td>Validation-ready</td>
+<td>Meets Red Hat Validated Content expectations</td>
+</tr>
+</tbody>
+</table>
+<h2 id="role-scorecard">Role Scorecard</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th style="text-align: center;">Bronze</th>
+<th style="text-align: center;">Silver</th>
+<th style="text-align: center;">Gold</th>
+<th style="text-align: center;">Platinum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tasks/</code>, <code>meta/main.yml</code>, and <code>README.md</code> present</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td><code>defaults/</code> with role-prefixed variables</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>README matches <code>docs/templates/role_readme_format_template.md</code></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td><code>verify_readme.py</code> passes</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Scenario under <code>extensions/molecule/</code></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Scenario exercises a happy path and at least one negative or cleanup path</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td><code>meta/argument_specs.yml</code> for public inputs</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Example playbook in the README matches actual variables</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Changelog fragments for consumer-facing changes</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Security scripts clean for the role</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Idempotent on re-run (Molecule verify)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Supported platforms and prerequisites documented</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Production <code>ansible-lint</code> profile clean without role excludes</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>CI evidence and maintainability suitable for Partner Engineering review</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Customer-facing release notes and support matrix entry</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="collection-scorecard-infraado">Collection Scorecard (<code>infra.ado</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th style="text-align: center;">Bronze</th>
+<th style="text-align: center;">Silver</th>
+<th style="text-align: center;">Gold</th>
+<th style="text-align: center;">Platinum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Builds with <code>ansible-galaxy collection build</code></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Pull request gate: lint, Molecule, and changelog</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Semantic Versioning and antsibull-changelog</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>GitHub Release and Galaxy publish path documented</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>EE build story (<code>aap_build_ee</code> or sibling EE repository)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>README and security checks required, not informational</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Consistent role metadata (<code>company</code>, <code>license</code>, SPDX)</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Argument specifications on all public roles</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr>
+<td>Galaxy importer or Automation Hub import validated</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-ado-uses-this-model">How ADO Uses This Model</h2>
+<ul>
+<li><strong>Default merge bar today:</strong> approximately Silver for touched roles (lint and Molecule coverage through the pull request gate).</li>
+<li><strong>Customer deliverable bar:</strong> Gold.</li>
+<li><strong>Validated Content submission bar:</strong> Platinum.</li>
+</ul>
+<p>Track gaps in <a href="../appendices/gap-analysis.md">Gap Analysis</a>.</p>
+<div class='page-break'></div>
+
+<h1 id="pull-request-checklist">Pull Request Checklist</h1>
+<p>Complete this checklist before you request review in the <a href="https://github.com/Automation-Development-Office/ado">ado</a> collection. It aligns with <code>.github/pull_request_template.md</code> and the pull request gate in <code>.github/workflows/main.yml</code>.</p>
+<h2 id="scope">Scope</h2>
+<ul>
+<li>[ ] You identified the change type: role, Molecule, CI, scripts, documentation, or bug fix.</li>
+<li>[ ] You listed the collection impact: roles and scenarios that you touched.</li>
+<li>[ ] For a large design change, a new role, or a breaking change, you discussed the work with maintainers before you opened the pull request.</li>
+</ul>
+<h2 id="local-checks">Local Checks</h2>
+<p>Run the following commands as applicable from the <code>ado</code> repository:</p>
+<pre><code class="language-bash">ansible-lint
+
+python scripts/verify_readme.py roles/&lt;role&gt;/README.md
+
+python3 scripts/security_checks.py roles/&lt;role_name&gt;
+
+python3 scripts/validate_changelog.py --ref main
+
+cd extensions
+molecule test -s &lt;scenario_name&gt;
+</code></pre>
+<ul>
+<li>[ ] <code>ansible-lint</code> is clean for the paths that you changed.</li>
+<li>[ ] The README format check passed for role changes.</li>
+<li>[ ] You reviewed security script findings.</li>
+<li>[ ] Relevant Molecule scenarios pass locally, or you documented why only CI will run them.</li>
+<li>[ ] <code>pre-commit run --all-files</code> is clean, or equivalent hooks passed.</li>
+</ul>
+<h2 id="changelog">Changelog</h2>
+<ul>
+<li>[ ] You added a fragment under <code>changelogs/fragments/</code>, or you applied the <code>skip-changelog</code> label for an exempt change.</li>
+<li>[ ] You did not hand-edit <code>CHANGELOG.rst</code> or <code>changelogs/changelog.yaml</code>, except in a dedicated release pull request.</li>
+</ul>
+<h2 id="quality">Quality</h2>
+<ul>
+<li>[ ] The change includes no secrets, credentials, vault data, or environment-specific customer values.</li>
+<li>[ ] Variables use the <code>&lt;role_name&gt;_</code> prefix.</li>
+<li>[ ] Modules use fully qualified collection names.</li>
+<li>[ ] Breaking changes are documented in the fragment and in the pull request description.</li>
+<li>[ ] New role README files follow <code>docs/templates/role_readme_format_template.md</code>.</li>
+<li>[ ] Molecule scenarios live under <code>extensions/molecule/</code>, not only under <code>roles/&lt;role&gt;/molecule/</code>.</li>
+</ul>
+<h2 id="pull-request-gate_1">Pull Request Gate</h2>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ansible Lint (<code>main.yml</code>)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Discover Molecule Scenarios (at least one)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Molecule matrix</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Changelog (unless <code>skip-changelog</code>)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>README format</td>
+<td>Informational today</td>
+</tr>
+<tr>
+<td>Security check</td>
+<td>Informational today</td>
+</tr>
+</tbody>
+</table>
+<h2 id="after-merge">After Merge</h2>
+<p>Maintainers should confirm whether a release tag is required and follow the Developers Guide when it is.</p>
+<div class='page-break'></div>
+
+<h1 id="validation-readiness-checklist">Validation Readiness Checklist</h1>
+<p>Complete this checklist before you propose <code>infra.ado</code>, or a focused subset of roles, for the Red Hat Validated Content program. Validation reviews the collection as a product: code, documentation, tests, CI, security, and customer experience.</p>
+<h2 id="content-tiers">Content Tiers</h2>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Published</strong></td>
+<td>Importable and available. Quality and support belong to the publisher.</td>
+</tr>
+<tr>
+<td><strong>Validated</strong></td>
+<td>Reviewed by Red Hat as a recommended automation pattern. This tier is not the same support bar as Certified.</td>
+</tr>
+<tr>
+<td><strong>Certified</strong></td>
+<td>Partner or integration certification with subscription support expectations.</td>
+</tr>
+</tbody>
+</table>
+<p>ADO day-to-day work targets high-quality published content under <code>infra.*</code>. Validated Content is an optional uplift.</p>
+<h2 id="evidence-pack">Evidence Pack</h2>
+<h3 id="technical-quality">Technical Quality</h3>
+<ul>
+<li>[ ] <code>ansible-lint</code> production profile passes without role-level ignores for submitted content.</li>
+<li>[ ] <code>ansible-test</code> sanity, or an equivalent tox-ansible path, is documented and green.</li>
+<li>[ ] Galaxy metadata in <code>galaxy.yml</code> is complete and accurate.</li>
+<li>[ ] Semantic Versioning is followed. Invalid tags are not used for release.</li>
+<li>[ ] Fully qualified collection names are used everywhere. Variables use role prefixes.</li>
+</ul>
+<h3 id="cicd-and-maintainability">CI/CD and Maintainability</h3>
+<ul>
+<li>[ ] Automated CI runs on every pull request for lint and integration tests.</li>
+<li>[ ] Every public role or plugin is exercised at least once in CI.</li>
+<li>[ ] Branch protection and required checks are documented.</li>
+<li>[ ] The release path from tag to artifact to Automation Hub or Galaxy is documented.</li>
+</ul>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li>[ ] Collection README covers purpose, install, requirements, and examples.</li>
+<li>[ ] Every role covers requirements, variables, examples, limitations, and platforms.</li>
+<li>[ ] Changelog or release notes are available for consumers.</li>
+<li>[ ] Support and ownership contacts are populated in <code>MAINTAINERS</code>.</li>
+</ul>
+<h3 id="design">Design</h3>
+<ul>
+<li>[ ] Workflows are idempotent.</li>
+<li>[ ] Collection scope is clear. Unrelated domains are partitioned or justified.</li>
+<li>[ ] Defaults are safe. No hardcoded secrets are present.</li>
+<li>[ ] Failures are clear. Privilege escalation is intentional and documented.</li>
+</ul>
+<h3 id="security_1">Security</h3>
+<ul>
+<li>[ ] No secrets appear in Git history for submitted paths.</li>
+<li>[ ] The dependency and supply-chain story for EE images is documented.</li>
+<li>[ ] <code>scripts/security_checks.py</code> and the data-exposure scan are clean.</li>
+</ul>
+<h3 id="functional-proof">Functional Proof</h3>
+<ul>
+<li>[ ] Molecule or equivalent tests demonstrate intended outcomes.</li>
+<li>[ ] Supported platforms are listed and tested.</li>
+<li>[ ] The execution environment used for runtime dependencies matches what customers receive.</li>
+</ul>
+<h2 id="ado-specific-notes">ADO-Specific Notes</h2>
+<p><strong>Current standard:</strong> The pull request gate enforces lint, Molecule, and changelog checks. README format and security scans are informational.</p>
+<p><strong>Recommended standard before validation:</strong> Make README and security checks required. Remove SPDX and <code>galaxy_info</code> drift. Adopt <code>argument_specs.yml</code> on all submitted roles. Consolidate duplicate CI workflows. Run galaxy-importer. Ensure Molecule README instructions match the <code>extensions/molecule/</code> layout.</p>
+<p>See <a href="maturity-model.md">Collection and Role Maturity Model</a> (Platinum) and <a href="../appendices/gap-analysis.md">Gap Analysis</a>.</p>
+<div class='page-break'></div>
+
+<h1 id="gap-analysis-current-standards-and-recommended-standards">Gap Analysis: Current Standards and Recommended Standards</h1>
+<p>This appendix summarizes an audit of the <code>ado</code> collection repository (<code>infra.ado</code> 1.0.3) that informed handbook version 1.1.1. Counts are approximate as of that authorship date.</p>
+<h2 id="strengths-to-keep">Strengths to Keep</h2>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Observation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Role coverage</td>
+<td>90 roles include README, tasks, and meta files</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>Strong pull request gate: ansible-lint, Molecule discovery and matrix, changelog</td>
+</tr>
+<tr>
+<td>Changelog</td>
+<td>antsibull-changelog with clear fragment rules</td>
+</tr>
+<tr>
+<td>Release</td>
+<td>Tag to pre-release preview to official release to optional Galaxy publish</td>
+</tr>
+<tr>
+<td>Documentation tooling</td>
+<td>Canonical role README template and <code>verify_readme.py</code></td>
+</tr>
+<tr>
+<td>Execution environments</td>
+<td><code>aap_build_ee</code> with <code>argument_specs.yml</code> and ansible-builder templates</td>
+</tr>
+<tr>
+<td>Developer experience</td>
+<td>Developers Guide, pre-commit, devcontainer, and devfile</td>
+</tr>
+<tr>
+<td>Code of Conduct</td>
+<td>Ansible Code of Conduct plus ADO addendum for secrets, AI policy, and conventions</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gaps-to-close">Gaps to Close</h2>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Scale</th>
+<th>Recommended standard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Invalid SPDX <code>GPL-3.0-or-later-0</code></td>
+<td>About 206 files under <code>roles/</code></td>
+<td>All YAML files must use <code>GPL-3.0-or-later</code></td>
+</tr>
+<tr>
+<td>Copy-pasted defaults comments that mention <code>advanced-cluster-management</code></td>
+<td>About 24 roles</td>
+<td>Defaults comments must name the actual role</td>
+</tr>
+<tr>
+<td>README and task variable drift</td>
+<td>Confirmed for example in <code>ocp_namespace</code></td>
+<td>Documented variables must match code. Prefer <code>argument_specs.yml</code>.</td>
+</tr>
+<tr>
+<td>Misleading Molecule instructions in README files</td>
+<td>Widespread</td>
+<td>README files must point to <code>extensions/molecule/&lt;scenario&gt;</code></td>
+</tr>
+<tr>
+<td>Orphan in-role <code>molecule/</code> directories</td>
+<td>8 roles</td>
+<td>Prefer collection-level scenarios only. Remove or synchronize orphans.</td>
+</tr>
+<tr>
+<td>Stub <code>tests/test.yml</code> files</td>
+<td>About 11 roles</td>
+<td>Remove stubs or replace them with real ansible-test targets</td>
+</tr>
+<tr>
+<td>Rare <code>argument_specs.yml</code> adoption</td>
+<td>5 of 90 roles</td>
+<td>New and public roles should include argument specifications</td>
+</tr>
+<tr>
+<td><code>galaxy_info</code> company and license drift</td>
+<td>About 11 or more roles</td>
+<td>Normalize to ADO and <code>GPL-3.0-or-later</code></td>
+</tr>
+<tr>
+<td><code>min_ansible_version</code> drift</td>
+<td>2 roles</td>
+<td>Align to <code>&gt;=2.16.0</code> / <code>"2.16.0"</code></td>
+</tr>
+<tr>
+<td>Incomplete <code>docs/roles.md</code> index</td>
+<td>89 roles missing</td>
+<td>Generate the index or remove the stale file</td>
+</tr>
+<tr>
+<td>Empty <code>MAINTAINERS</code></td>
+<td>1 file</td>
+<td>Populate ownership</td>
+</tr>
+<tr>
+<td>Duplicate CI (<code>main.yml</code> and <code>tests.yml</code>)</td>
+<td>2 workflows</td>
+<td>Consolidate when ready</td>
+</tr>
+<tr>
+<td>Informational README and security gates</td>
+<td>2 or more jobs</td>
+<td>Promote to required when noise is low</td>
+</tr>
+<tr>
+<td>Sample plugin docs without a <code>plugins/</code> directory</td>
+<td>Several RST files</td>
+<td>Remove scaffolding or implement plugins</td>
+</tr>
+<tr>
+<td>Generic bug report template</td>
+<td>1 file</td>
+<td>Replace with an ADO-specific Ansible bug template</td>
+</tr>
+</tbody>
+</table>
+<h2 id="priority-roadmap">Priority Roadmap</h2>
+<ol>
+<li><strong>P0 — Consistency hygiene:</strong> Fix SPDX identifiers, normalize <code>galaxy_info</code>, and correct Molecule README paths.</li>
+<li><strong>P1 — Contract quality:</strong> Add <code>argument_specs.yml</code> for high-traffic roles and fix known variable-name drift.</li>
+<li><strong>P2 — Gate hardening:</strong> Require README verification and security scripts on pull requests that touch roles.</li>
+<li><strong>P3 — Platform:</strong> Add galaxy-importer in CI, document an Automation Hub publish path, and consolidate workflows.</li>
+</ol>
+<div class='page-break'></div>
+
+<h1 id="new-role-skeleton">New Role Skeleton</h1>
+<p>Copy this layout into <code>roles/&lt;role_name&gt;/</code> in the <a href="https://github.com/Automation-Development-Office/ado">ado</a> collection. Replace <code>&lt;role_name&gt;</code> throughout.</p>
+<h2 id="required-layout">Required Layout</h2>
+<pre><code class="language-text">roles/&lt;role_name&gt;/
+├── README.md                 # from docs/templates/role_readme_format_template.md
+├── defaults/main.yml         # &lt;role_name&gt;_* variables only
+├── handlers/main.yml         # can be empty with a comment
+├── meta/main.yml             # company: Automation Development Office; license: GPL-3.0-or-later; min_ansible_version: &quot;2.16.0&quot;
+├── meta/argument_specs.yml   # recommended for public inputs
+├── tasks/main.yml
+└── vars/main.yml             # optional constants
+</code></pre>
+<h2 id="molecule-scenario-layout">Molecule Scenario Layout</h2>
+<p>Place scenarios at collection level:</p>
+<pre><code class="language-text">extensions/molecule/integration_&lt;role_name&gt;/
+├── molecule.yml
+├── converge.yml
+├── verify.yml
+├── destroy.yml
+├── README.md
+└── TEST.md
+</code></pre>
+<p>Prefer shared playbooks under <code>extensions/molecule/utils/playbooks/</code> when patterns repeat.</p>
+<h2 id="minimum-metamainyml">Minimum <code>meta/main.yml</code></h2>
+<pre><code class="language-yaml">---
+# SPDX-License-Identifier: GPL-3.0-or-later
+galaxy_info:
+  author: Automation Development Office
+  description: &lt;one line&gt;
+  company: Automation Development Office
+  license: GPL-3.0-or-later
+  min_ansible_version: &quot;2.16.0&quot;
+  platforms: []
+  galaxy_tags: []
+dependencies: []
+</code></pre>
+<h2 id="defaultsmainyml-pattern"><code>defaults/main.yml</code> Pattern</h2>
+<pre><code class="language-yaml">---
+# SPDX-License-Identifier: GPL-3.0-or-later
+# defaults file for &lt;role_name&gt;
+
+&lt;role_name&gt;_state: present
+</code></pre>
+<h2 id="changelog_1">Changelog</h2>
+<p>Add <code>changelogs/fragments/&lt;short-name&gt;.yml</code> when project rules require a fragment for the change. Follow the changelog rule and the Developers Guide in the <code>ado</code> repository.</p>
+<div class='page-break'></div>
+
+<h1 id="collection-versus-role-decisions">Collection Versus Role Decisions</h1>
+<p>Use the following decision flow when you need new automation capability:</p>
+<pre><code class="language-text">Need new automation capability
+            |
+            v
+    Different product or domain
+    than existing collection scope?
+            |
+     Yes ---+--- No
+      |              |
+      v              v
+ Discuss a new     Reusable across
+ collection with   playbooks or teams?
+ maintainers             |
+                  Yes ---+--- No
+                   |              |
+                   v              v
+            New role in     Extend the existing
+            infra.ado       role in tasks/ and
+                            defaults/ if it is
+                            the same concern
+</code></pre>
+<h2 id="current-collection-boundaries">Current Collection Boundaries</h2>
+<p><code>infra.ado</code> intentionally spans multiple domains in one collection:</p>
+<ul>
+<li>Ansible Automation Platform and bootstrap</li>
+<li>OpenShift (<code>ocp_*</code>)</li>
+<li>Identity (Identity Management and Red Hat build of Keycloak)</li>
+<li>Red Hat Enterprise Linux and Satellite</li>
+<li>Observability and DevOps tooling</li>
+</ul>
+<p><strong>Current standard:</strong> Ship related platform bootstrap roles in <code>infra.ado</code> rather than creating many small collections.</p>
+<p><strong>Recommended standard:</strong> If a domain needs a separate release cadence, execution environment, or Validated Content submission, split it into a focused collection, for example <code>infra.ado_ocp</code>, with a documented migration plan. Do not split casually.</p>
+<div class='page-break'></div>
+
+<h1 id="architecture-diagrams">Architecture Diagrams</h1>
+<p>Render these Mermaid diagrams on GitHub or in any Mermaid-capable viewer. The same flows appear in the handbook as plain-text diagrams.</p>
+<h2 id="delivery-pipeline">Delivery Pipeline</h2>
+<pre><code class="language-mermaid">flowchart TD
+  dev[Developer] --&gt; gh[GitHub ado]
+  gh --&gt; gha[GitHub Actions]
+  gha --&gt; col[Collection tarball]
+  gha --&gt; ee[EE image]
+  col --&gt; hub[Automation Hub or Galaxy]
+  ee --&gt; hub
+  hub --&gt; aap[Ansible Automation Platform controller]
+  aap --&gt; nodes[Execution nodes]
+  nodes --&gt; infra[Managed infrastructure]
+</code></pre>
+<h2 id="pull-request-gate_2">Pull Request Gate</h2>
+<pre><code class="language-mermaid">flowchart LR
+  pr[Pull request] --&gt; lint[ansible-lint]
+  pr --&gt; mol[Molecule matrix]
+  pr --&gt; cl[Changelog]
+  lint --&gt; gate[Pull request gate]
+  mol --&gt; gate
+  cl --&gt; gate
+  gate --&gt; merge[Merge to main]
+</code></pre>
+<h2 id="role-versus-collection-decision">Role Versus Collection Decision</h2>
+<p>See <a href="../templates/collection-decision.md">Collection Versus Role Decisions</a>.</p></body></html>
