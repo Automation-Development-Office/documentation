@@ -1,0 +1,130 @@
+{
+  "organization": "Automation-Development-Office",
+  "generated_at": "2026-08-07T23:04:14Z",
+  "products": [
+    {
+      "id": "ado",
+      "name": "infra.ado collection",
+      "repo": "ado",
+      "kind": "ansible_collection",
+      "repo_url": "https://github.com/Automation-Development-Office/ado",
+      "latest_stable": {
+        "tag": "1.1.0",
+        "published_at": "2026-08-07T11:30:12Z",
+        "url": "https://github.com/Automation-Development-Office/ado/releases/tag/1.1.0",
+        "name": "Adding ec2 copy module and some minor bug and documentations fixes",
+        "artifact": "infra.ado:1.1.0"
+      },
+      "latest_prerelease": {
+        "tag": null,
+        "published_at": null,
+        "url": null,
+        "name": null,
+        "artifact": null
+      },
+      "deployed": {
+        "prod": {
+          "version": "1.1.0",
+          "updated_at": "2026-08-07T11:30:12Z",
+          "notes": "From GitHub Releases (stable). Not a runtime cluster pin; replace with Galaxy/Hub or cluster discovery when available.",
+          "source": "github_release:stable",
+          "digest": null,
+          "manual": null
+        },
+        "stage": {
+          "version": null,
+          "updated_at": null,
+          "notes": "No prerelease GitHub Release found.",
+          "source": "github_release",
+          "digest": null,
+          "manual": null
+        }
+      },
+      "notes": "Published to Ansible Galaxy from GitHub Releases."
+    },
+    {
+      "id": "ado-ee",
+      "name": "ADO Execution Environment",
+      "repo": "ado-ee",
+      "kind": "container",
+      "repo_url": "https://github.com/Automation-Development-Office/ado-ee",
+      "latest_stable": {
+        "tag": "1.1.0",
+        "published_at": "2026-08-07T18:01:45Z",
+        "url": "https://github.com/Automation-Development-Office/ado-ee/releases/tag/1.1.0",
+        "name": "Updating to pull in the new infra.ado collection release",
+        "artifact": "ghcr.io/automation-development-office/ado-ee:1.1.0"
+      },
+      "latest_prerelease": {
+        "tag": null,
+        "published_at": null,
+        "url": null,
+        "name": null,
+        "artifact": null
+      },
+      "deployed": {
+        "prod": {
+          "version": "1.1.0",
+          "updated_at": "2026-08-07T23:04:15Z",
+          "notes": "Resolved `ghcr.io/automation-development-office/ado-ee:latest` to `1.1.0` by digest.",
+          "source": "ghcr:latest",
+          "digest": "sha256:e2f729cd6c224b318d908bb84dd971aeddebf9a8a49d770a99070cd50c60d168",
+          "manual": null
+        },
+        "stage": {
+          "version": null,
+          "updated_at": null,
+          "notes": "No GitHub prerelease tag found in GHCR.",
+          "source": "ghcr_prerelease",
+          "digest": null,
+          "manual": null
+        }
+      },
+      "notes": "Container image; often tracks the latest infra.ado collection."
+    },
+    {
+      "id": "ado-preflight-ui",
+      "name": "ADO Preflight UI",
+      "repo": "ado-preflight-ui",
+      "kind": "container",
+      "repo_url": "https://github.com/Automation-Development-Office/ado-preflight-ui",
+      "latest_stable": {
+        "tag": "1.1.0",
+        "published_at": "2026-07-23T14:47:04Z",
+        "url": "https://github.com/Automation-Development-Office/ado-preflight-ui/releases/tag/1.1.0",
+        "name": "Release 1.1.0",
+        "artifact": "ghcr.io/automation-development-office/ado-preflight-ui:1.1.0"
+      },
+      "latest_prerelease": {
+        "tag": "1.1.10-CCP",
+        "published_at": "2026-07-24T11:58:12Z",
+        "url": "https://github.com/Automation-Development-Office/ado-preflight-ui/releases/tag/1.1.10-CCP",
+        "name": "1.1.10 CCP",
+        "artifact": "ghcr.io/automation-development-office/ado-preflight-ui:1.1.10-CCP"
+      },
+      "deployed": {
+        "prod": {
+          "version": "1.1.10-CCP",
+          "updated_at": "2026-08-07T23:04:17Z",
+          "notes": "Resolved `ghcr.io/automation-development-office/ado-preflight-ui:latest` to `1.1.10-CCP` by digest.",
+          "source": "ghcr:latest",
+          "digest": "sha256:b98d5f9cf8b054b74c4decd6862ce9d5aad047cf41d3fe26ff45be299a3f631e",
+          "manual": null
+        },
+        "stage": {
+          "version": "1.1.10-CCP",
+          "updated_at": "2026-07-24T11:58:12Z",
+          "notes": "Newest GitHub prerelease present in GHCR (`ghcr.io/automation-development-office/ado-preflight-ui:1.1.10-CCP`).",
+          "source": "ghcr_prerelease",
+          "digest": "sha256:b98d5f9cf8b054b74c4decd6862ce9d5aad047cf41d3fe26ff45be299a3f631e",
+          "manual": null
+        }
+      },
+      "notes": "Stable releases and CCP prereleases are listed separately."
+    }
+  ],
+  "environments": [
+    "prod",
+    "stage"
+  ]
+}

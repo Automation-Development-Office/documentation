@@ -18,6 +18,7 @@
 | Document | Purpose |
 |----------|---------|
 | [ADO Engineering Standards](engineering-standards/ADO-Engineering-Standards.md) | Authoritative handbook |
+| [Release and deployment status](release-status/release-status.md) | Live board of released vs deployed versions across ADO product repos |
 | [Pull Request Checklist](engineering-standards/checklists/pr-checklist.md) | Checks to complete before you request review |
 | [Validation Readiness Checklist](engineering-standards/checklists/validation-readiness.md) | Scorecard for Red Hat Validated Content readiness |
 | [Collection and Role Maturity Model](engineering-standards/checklists/maturity-model.md) | Bronze through Platinum maturity levels |
