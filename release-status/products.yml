@@ -1,0 +1,55 @@
+# Products whose GitHub Releases feed the release status board.
+# Add a row here when a new shipping repository joins the org.
+#
+# deploy_channels tell the nightly job how to auto-fill deployments.yml.
+# Supported channel types:
+#   ghcr              — resolve an image tag (usually :latest) to a version tag by digest
+#   ghcr_prerelease   — newest GitHub prerelease tag that exists in GHCR
+#   github_release    — newest GitHub Release (stable or prerelease)
+#   galaxy            — newest version on Ansible Galaxy (public API)
+#   manual            — never auto-overwrite (set in deployments.yml with manual: true)
+organization: Automation-Development-Office
+
+products:
+  - id: ado
+    name: infra.ado collection
+    repo: ado
+    kind: ansible_collection
+    galaxy: infra.ado
+    notes: Published to Ansible Galaxy from GitHub Releases.
+    deploy_channels:
+      # Galaxy namespace is not publicly queryable yet; use the GitHub Release as the
+      # published channel. Switch prod to type: galaxy when the collection is visible
+      # on galaxy.ansible.com (or point at a private hub API later).
+      prod:
+        type: github_release
+        prerelease: false
+      stage:
+        type: github_release
+        prerelease: true
+
+  - id: ado-ee
+    name: ADO Execution Environment
+    repo: ado-ee
+    kind: container
+    image: ghcr.io/automation-development-office/ado-ee
+    notes: Container image; often tracks the latest infra.ado collection.
+    deploy_channels:
+      prod:
+        type: ghcr
+        tag: latest
+      stage:
+        type: ghcr_prerelease
+
+  - id: ado-preflight-ui
+    name: ADO Preflight UI
+    repo: ado-preflight-ui
+    kind: container
+    image: ghcr.io/automation-development-office/ado-preflight-ui
+    notes: Stable releases and CCP prereleases are listed separately.
+    deploy_channels:
+      prod:
+        type: ghcr
+        tag: latest
+      stage:
+        type: ghcr_prerelease

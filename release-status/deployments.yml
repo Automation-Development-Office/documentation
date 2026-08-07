@@ -1,0 +1,54 @@
+# Deployed version pins — mostly auto-populated by the nightly release-status job.
+#
+# Last discovery: 2026-08-07T23:04:14Z
+# Sources are defined under deploy_channels in products.yml (GHCR :latest,
+# GitHub Releases, Galaxy, etc.).
+#
+# To pin an environment by hand and stop overwrites, set manual: true:
+#
+#   ado-ee:
+#     prod:
+#       manual: true
+#       version: "1.0.1"
+#       updated_at: "2026-08-01T12:00:00Z"
+#       notes: Held back for soak testing
+#
+ado:
+  prod:
+    version: 1.1.0
+    updated_at: '2026-08-07T11:30:12Z'
+    source: github_release:stable
+    notes: From GitHub Releases (stable). Not a runtime cluster pin; replace with
+      Galaxy/Hub or cluster discovery when available.
+  stage:
+    version: null
+    updated_at: null
+    source: github_release
+    notes: No prerelease GitHub Release found.
+ado-ee:
+  prod:
+    version: 1.1.0
+    updated_at: '2026-08-07T23:04:15Z'
+    source: ghcr:latest
+    digest: sha256:e2f729cd6c224b318d908bb84dd971aeddebf9a8a49d770a99070cd50c60d168
+    notes: Resolved `ghcr.io/automation-development-office/ado-ee:latest` to `1.1.0`
+      by digest.
+  stage:
+    version: null
+    updated_at: null
+    source: ghcr_prerelease
+    notes: No GitHub prerelease tag found in GHCR.
+ado-preflight-ui:
+  prod:
+    version: 1.1.10-CCP
+    updated_at: '2026-08-07T23:04:17Z'
+    source: ghcr:latest
+    digest: sha256:b98d5f9cf8b054b74c4decd6862ce9d5aad047cf41d3fe26ff45be299a3f631e
+    notes: Resolved `ghcr.io/automation-development-office/ado-preflight-ui:latest`
+      to `1.1.10-CCP` by digest.
+  stage:
+    version: 1.1.10-CCP
+    updated_at: '2026-07-24T11:58:12Z'
+    source: ghcr_prerelease
+    digest: sha256:b98d5f9cf8b054b74c4decd6862ce9d5aad047cf41d3fe26ff45be299a3f631e
+    notes: Newest GitHub prerelease present in GHCR (`ghcr.io/automation-development-office/ado-preflight-ui:1.1.10-CCP`).
