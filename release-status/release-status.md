@@ -1,6 +1,6 @@
 # ADO release and deployment status
 
-_Generated automatically for [`Automation-Development-Office`](https://github.com/Automation-Development-Office). Last refresh: `2026-08-07T23:04:14Z`._
+_Generated automatically for [`Automation-Development-Office`](https://github.com/Automation-Development-Office). Last refresh: `2026-08-07T23:06:36Z`._
 
 This page tracks **released** versions (GitHub Releases) and **deployed / published channel** versions from [`deployments.yml`](deployments.yml), which the nightly workflow auto-fills from GHCR and configured sources.
 
