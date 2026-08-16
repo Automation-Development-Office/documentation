@@ -1,6 +1,6 @@
 # ADO release and deployment status
 
-_Generated automatically for [`Automation-Development-Office`](https://github.com/Automation-Development-Office). Last refresh: `2026-08-15T06:18:00Z`._
+_Generated automatically for [`Automation-Development-Office`](https://github.com/Automation-Development-Office). Last refresh: `2026-08-16T06:19:33Z`._
 
 This page tracks **released** versions (GitHub Releases) and **deployed / published channel** versions from [`deployments.yml`](deployments.yml), which the nightly workflow auto-fills from GHCR and configured sources.
 
@@ -9,8 +9,8 @@ This page tracks **released** versions (GitHub Releases) and **deployed / publis
 | Product | Latest stable | Published | Artifact | Latest prerelease | Deployed (prod) | Deployed (stage) | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [infra.ado collection](https://github.com/Automation-Development-Office/ado) | [1.1.0](https://github.com/Automation-Development-Office/ado/releases/tag/1.1.0) | 2026-08-07 | infra.ado:1.1.0 | — | `1.1.0` (2026-08-07) · _github_release:stable_ | — | Published to Ansible Galaxy from GitHub Releases. |
-| [ADO Execution Environment](https://github.com/Automation-Development-Office/ado-ee) | [1.1.0](https://github.com/Automation-Development-Office/ado-ee/releases/tag/1.1.0) | 2026-08-07 | ghcr.io/automation-development-office/ado-ee:1.1.0 | — | `1.1.0` (2026-08-15) · _ghcr:latest_ | — | Container image; often tracks the latest infra.ado collection. |
-| [ADO Preflight UI](https://github.com/Automation-Development-Office/ado-preflight-ui) | [1.1.0](https://github.com/Automation-Development-Office/ado-preflight-ui/releases/tag/1.1.0) | 2026-07-23 | ghcr.io/automation-development-office/ado-preflight-ui:1.1.0 | [1.1.10-CCP](https://github.com/Automation-Development-Office/ado-preflight-ui/releases/tag/1.1.10-CCP) | `1.1.10-CCP` (2026-08-15) · _ghcr:latest_ | `1.1.10-CCP` (2026-07-24) · _ghcr_prerelease_ | Stable releases and CCP prereleases are listed separately. |
+| [ADO Execution Environment](https://github.com/Automation-Development-Office/ado-ee) | [1.1.0](https://github.com/Automation-Development-Office/ado-ee/releases/tag/1.1.0) | 2026-08-07 | ghcr.io/automation-development-office/ado-ee:1.1.0 | — | `1.1.0` (2026-08-16) · _ghcr:latest_ | — | Container image; often tracks the latest infra.ado collection. |
+| [ADO Preflight UI](https://github.com/Automation-Development-Office/ado-preflight-ui) | [1.1.0](https://github.com/Automation-Development-Office/ado-preflight-ui/releases/tag/1.1.0) | 2026-07-23 | ghcr.io/automation-development-office/ado-preflight-ui:1.1.0 | [1.1.10-CCP](https://github.com/Automation-Development-Office/ado-preflight-ui/releases/tag/1.1.10-CCP) | `1.1.10-CCP` (2026-08-16) · _ghcr:latest_ | `1.1.10-CCP` (2026-07-24) · _ghcr_prerelease_ | Stable releases and CCP prereleases are listed separately. |
 
 ## How this is maintained
 
