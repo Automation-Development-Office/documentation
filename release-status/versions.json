@@ -1,6 +1,6 @@
 {
   "organization": "Automation-Development-Office",
-  "generated_at": "2026-08-24T06:33:09Z",
+  "generated_at": "2026-08-25T06:23:52Z",
   "products": [
     {
       "id": "ado",
@@ -65,7 +65,7 @@
       "deployed": {
         "prod": {
           "version": "1.1.0",
-          "updated_at": "2026-08-24T06:33:10Z",
+          "updated_at": "2026-08-25T06:23:55Z",
           "notes": "Resolved `ghcr.io/automation-development-office/ado-ee:latest` to `1.1.0` by digest.",
           "source": "ghcr:latest",
           "digest": "sha256:e2f729cd6c224b318d908bb84dd971aeddebf9a8a49d770a99070cd50c60d168",
@@ -89,34 +89,34 @@
       "kind": "container",
       "repo_url": "https://github.com/Automation-Development-Office/ado-preflight-ui",
       "latest_stable": {
-        "tag": "1.1.0",
-        "published_at": "2026-07-23T14:47:04Z",
-        "url": "https://github.com/Automation-Development-Office/ado-preflight-ui/releases/tag/1.1.0",
-        "name": "Release 1.1.0",
-        "artifact": "ghcr.io/automation-development-office/ado-preflight-ui:1.1.0"
+        "tag": "aws-test",
+        "published_at": "2026-08-24T11:18:56Z",
+        "url": "https://github.com/Automation-Development-Office/ado-preflight-ui/releases/tag/aws-test",
+        "name": "Testing aws wire in",
+        "artifact": "ghcr.io/automation-development-office/ado-preflight-ui:aws-test"
       },
       "latest_prerelease": {
-        "tag": "1.1.10-CCP",
-        "published_at": "2026-07-24T11:58:12Z",
-        "url": "https://github.com/Automation-Development-Office/ado-preflight-ui/releases/tag/1.1.10-CCP",
-        "name": "1.1.10 CCP",
-        "artifact": "ghcr.io/automation-development-office/ado-preflight-ui:1.1.10-CCP"
+        "tag": "v1.2.3",
+        "published_at": "2026-08-24T16:43:28Z",
+        "url": "https://github.com/Automation-Development-Office/ado-preflight-ui/releases/tag/v1.2.3",
+        "name": "Testing aws wire in",
+        "artifact": "ghcr.io/automation-development-office/ado-preflight-ui:v1.2.3"
       },
       "deployed": {
         "prod": {
           "version": "1.1.10-CCP",
-          "updated_at": "2026-08-24T06:33:12Z",
+          "updated_at": "2026-08-25T06:23:59Z",
           "notes": "Resolved `ghcr.io/automation-development-office/ado-preflight-ui:latest` to `1.1.10-CCP` by digest.",
           "source": "ghcr:latest",
           "digest": "sha256:b98d5f9cf8b054b74c4decd6862ce9d5aad047cf41d3fe26ff45be299a3f631e",
           "manual": null
         },
         "stage": {
-          "version": "1.1.10-CCP",
-          "updated_at": "2026-07-24T11:58:12Z",
-          "notes": "Newest GitHub prerelease present in GHCR (`ghcr.io/automation-development-office/ado-preflight-ui:1.1.10-CCP`).",
+          "version": "v1.2.3",
+          "updated_at": "2026-08-24T16:43:28Z",
+          "notes": "Newest GitHub prerelease present in GHCR (`ghcr.io/automation-development-office/ado-preflight-ui:v1.2.3`).",
           "source": "ghcr_prerelease",
-          "digest": "sha256:b98d5f9cf8b054b74c4decd6862ce9d5aad047cf41d3fe26ff45be299a3f631e",
+          "digest": "sha256:5b684a2b6f9d82de05af3f43fa3714eb85b67df7e4e8721d2b89765b5155302c",
           "manual": null
         }
       },
