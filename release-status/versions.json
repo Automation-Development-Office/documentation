@@ -1,6 +1,6 @@
 {
   "organization": "Automation-Development-Office",
-  "generated_at": "2026-08-26T06:26:18Z",
+  "generated_at": "2026-08-27T16:58:43Z",
   "products": [
     {
       "id": "ado",
@@ -9,11 +9,11 @@
       "kind": "ansible_collection",
       "repo_url": "https://github.com/Automation-Development-Office/ado",
       "latest_stable": {
-        "tag": "1.1.0",
-        "published_at": "2026-08-07T11:30:12Z",
-        "url": "https://github.com/Automation-Development-Office/ado/releases/tag/1.1.0",
-        "name": "Adding ec2 copy module and some minor bug and documentations fixes",
-        "artifact": "infra.ado:1.1.0"
+        "tag": "1.2.0",
+        "published_at": "2026-08-26T17:21:01Z",
+        "url": "https://github.com/Automation-Development-Office/ado/releases/tag/1.2.0",
+        "name": "New Roles 1.2.0",
+        "artifact": "infra.ado:1.2.0"
       },
       "latest_prerelease": {
         "tag": null,
@@ -24,8 +24,8 @@
       },
       "deployed": {
         "prod": {
-          "version": "1.1.0",
-          "updated_at": "2026-08-07T11:30:12Z",
+          "version": "1.2.0",
+          "updated_at": "2026-08-26T17:21:01Z",
           "notes": "From GitHub Releases (stable). Not a runtime cluster pin; replace with Galaxy/Hub or cluster discovery when available.",
           "source": "github_release:stable",
           "digest": null,
@@ -65,7 +65,7 @@
       "deployed": {
         "prod": {
           "version": "1.1.0",
-          "updated_at": "2026-08-26T06:26:20Z",
+          "updated_at": "2026-08-27T16:58:46Z",
           "notes": "Resolved `ghcr.io/automation-development-office/ado-ee:latest` to `1.1.0` by digest.",
           "source": "ghcr:latest",
           "digest": "sha256:e2f729cd6c224b318d908bb84dd971aeddebf9a8a49d770a99070cd50c60d168",
@@ -97,7 +97,7 @@
       },
       "latest_prerelease": {
         "tag": "v1.2.3",
-        "published_at": "2026-08-24T16:43:28Z",
+        "published_at": "2026-08-27T11:47:23Z",
         "url": "https://github.com/Automation-Development-Office/ado-preflight-ui/releases/tag/v1.2.3",
         "name": "Testing aws wire in",
         "artifact": "ghcr.io/automation-development-office/ado-preflight-ui:v1.2.3"
@@ -105,7 +105,7 @@
       "deployed": {
         "prod": {
           "version": "1.1.10-CCP",
-          "updated_at": "2026-08-26T06:26:25Z",
+          "updated_at": "2026-08-27T16:58:50Z",
           "notes": "Resolved `ghcr.io/automation-development-office/ado-preflight-ui:latest` to `1.1.10-CCP` by digest.",
           "source": "ghcr:latest",
           "digest": "sha256:b98d5f9cf8b054b74c4decd6862ce9d5aad047cf41d3fe26ff45be299a3f631e",
@@ -113,10 +113,10 @@
         },
         "stage": {
           "version": "v1.2.3",
-          "updated_at": "2026-08-24T16:43:28Z",
+          "updated_at": "2026-08-27T11:47:23Z",
           "notes": "Newest GitHub prerelease present in GHCR (`ghcr.io/automation-development-office/ado-preflight-ui:v1.2.3`).",
           "source": "ghcr_prerelease",
-          "digest": "sha256:5b684a2b6f9d82de05af3f43fa3714eb85b67df7e4e8721d2b89765b5155302c",
+          "digest": "sha256:190f55c9400729e3947b1f1624750f2b5a06ebb9df8384e7393b647532a5b856",
           "manual": null
         }
       },
