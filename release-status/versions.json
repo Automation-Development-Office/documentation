@@ -1,6 +1,6 @@
 {
   "organization": "Automation-Development-Office",
-  "generated_at": "2026-09-09T10:15:46Z",
+  "generated_at": "2026-09-10T10:09:44Z",
   "products": [
     {
       "id": "ado",
@@ -65,7 +65,7 @@
       "deployed": {
         "prod": {
           "version": "1.2.0",
-          "updated_at": "2026-09-09T10:15:49Z",
+          "updated_at": "2026-09-10T10:09:46Z",
           "notes": "Resolved `ghcr.io/automation-development-office/ado-ee:latest` to `1.2.0` by digest.",
           "source": "ghcr:latest",
           "digest": "sha256:010a47d817cb914972b1c3f05770a27b93a0b4005ef1aaf7838799a8110ad7f0",
@@ -105,7 +105,7 @@
       "deployed": {
         "prod": {
           "version": "1.3.0",
-          "updated_at": "2026-09-09T10:15:59Z",
+          "updated_at": "2026-09-10T10:09:49Z",
           "notes": "Resolved `ghcr.io/automation-development-office/ado-preflight-ui:latest` to `1.3.0` by digest.",
           "source": "ghcr:latest",
           "digest": "sha256:71f3304acd5ab67b5d1deb9aac9e578db892689287357525b9a9f82b769a034a",
