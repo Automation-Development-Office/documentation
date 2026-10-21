@@ -1,6 +1,6 @@
 {
   "organization": "Automation-Development-Office",
-  "generated_at": "2026-10-20T10:31:48Z",
+  "generated_at": "2026-10-21T10:44:37Z",
   "products": [
     {
       "id": "ado",
@@ -65,7 +65,7 @@
       "deployed": {
         "prod": {
           "version": "1.2.0",
-          "updated_at": "2026-10-20T10:31:51Z",
+          "updated_at": "2026-10-21T10:44:41Z",
           "notes": "Resolved `ghcr.io/automation-development-office/ado-ee:latest` to `1.2.0` by digest.",
           "source": "ghcr:latest",
           "digest": "sha256:010a47d817cb914972b1c3f05770a27b93a0b4005ef1aaf7838799a8110ad7f0",
