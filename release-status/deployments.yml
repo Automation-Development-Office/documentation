@@ -1,6 +1,6 @@
 # Deployed version pins — mostly auto-populated by the nightly release-status job.
 #
-# Last discovery: 2026-10-25T10:17:25Z
+# Last discovery: 2026-10-26T11:43:35Z
 # Sources are defined under deploy_channels in products.yml (GHCR :latest,
 # GitHub Releases, Galaxy, etc.).
 #
@@ -28,7 +28,7 @@ ado:
 ado-ee:
   prod:
     version: 1.2.0
-    updated_at: '2026-10-25T10:17:28Z'
+    updated_at: '2026-10-26T11:43:39Z'
     source: ghcr:latest
     digest: sha256:010a47d817cb914972b1c3f05770a27b93a0b4005ef1aaf7838799a8110ad7f0
     notes: Resolved `ghcr.io/automation-development-office/ado-ee:latest` to `1.2.0`
