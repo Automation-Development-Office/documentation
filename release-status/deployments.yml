@@ -1,6 +1,6 @@
 # Deployed version pins — mostly auto-populated by the nightly release-status job.
 #
-# Last discovery: 2026-10-29T11:53:24Z
+# Last discovery: 2026-10-30T11:46:25Z
 # Sources are defined under deploy_channels in products.yml (GHCR :latest,
 # GitHub Releases, Galaxy, etc.).
 #
@@ -28,7 +28,7 @@ ado:
 ado-ee:
   prod:
     version: 1.2.0
-    updated_at: '2026-10-29T11:53:28Z'
+    updated_at: '2026-10-30T11:46:29Z'
     source: ghcr:latest
     digest: sha256:010a47d817cb914972b1c3f05770a27b93a0b4005ef1aaf7838799a8110ad7f0
     notes: Resolved `ghcr.io/automation-development-office/ado-ee:latest` to `1.2.0`
@@ -43,7 +43,7 @@ ado-preflight-ui:
     version: null
     updated_at: null
     source: ghcr:latest
-    digest: sha256:1c414091e4872eed8e7ba612bba6d5ef31f1a72932e6a9aebf50b5b45a97c5c4
+    digest: sha256:684cd952bb226a3e5632d6a4418308aed62788c0fefde6fe6af7859aad580c09
     notes: Found `ghcr.io/automation-development-office/ado-preflight-ui:latest` but
       no matching version tag for digest.
   stage:
