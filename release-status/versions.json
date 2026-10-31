@@ -1,6 +1,6 @@
 {
   "organization": "Automation-Development-Office",
-  "generated_at": "2026-10-30T11:46:25Z",
+  "generated_at": "2026-10-31T11:20:37Z",
   "products": [
     {
       "id": "ado",
@@ -9,11 +9,11 @@
       "kind": "ansible_collection",
       "repo_url": "https://github.com/Automation-Development-Office/ado",
       "latest_stable": {
-        "tag": "2.1.0",
-        "published_at": "2026-10-19T13:48:45Z",
-        "url": "https://github.com/Automation-Development-Office/ado/releases/tag/2.1.0",
-        "name": "Latest release V2.1.0",
-        "artifact": "infra.ado:2.1.0"
+        "tag": "2.1.1",
+        "published_at": "2026-10-30T17:11:46Z",
+        "url": "https://github.com/Automation-Development-Office/ado/releases/tag/2.1.1",
+        "name": "Latest Collection Release",
+        "artifact": "infra.ado:2.1.1"
       },
       "latest_prerelease": {
         "tag": null,
@@ -24,8 +24,8 @@
       },
       "deployed": {
         "prod": {
-          "version": "2.1.0",
-          "updated_at": "2026-10-19T13:48:45Z",
+          "version": "2.1.1",
+          "updated_at": "2026-10-30T17:11:46Z",
           "notes": "From GitHub Releases (stable). Not a runtime cluster pin; replace with Galaxy/Hub or cluster discovery when available.",
           "source": "github_release:stable",
           "digest": null,
@@ -65,7 +65,7 @@
       "deployed": {
         "prod": {
           "version": "1.2.0",
-          "updated_at": "2026-10-30T11:46:29Z",
+          "updated_at": "2026-10-31T11:20:39Z",
           "notes": "Resolved `ghcr.io/automation-development-office/ado-ee:latest` to `1.2.0` by digest.",
           "source": "ghcr:latest",
           "digest": "sha256:010a47d817cb914972b1c3f05770a27b93a0b4005ef1aaf7838799a8110ad7f0",
